@@ -1,0 +1,138 @@
+---
+title: VoiceLine Features Guide
+description: Explore the core capabilities of VoiceLine, from automated activity logging to AI-driven coaching, to maximize your sales team's potential.
+---
+
+## Overview
+
+VoiceLine empowers your field sales team with AI-driven tools that capture calls, analyze conversations, and provide coaching insights. You gain more selling time by automating routine tasks like CRM logging and meeting prep, while unlocking market trends and performance improvements.
+
+<Columns cols={3}>
+  <Card title="Capture" icon="mic" href="#capture">
+    Automatically log sales activities and calls to your CRM without manual entry.
+  </Card>
+  <Card title="Analyze" icon="bar-chart-3" href="#analyze">
+    Extract insights from conversations to spot trends and opportunities.
+  </Card>
+  <Card title="Coach" icon="award" href="#coach">
+    Get personalized coaching recommendations to elevate team performance.
+  </Card>
+</Columns>
+
+<Callout kind="info">
+  Start with the Capture feature to see immediate time savings—enable it in your dashboard settings.
+</Callout>
+
+## Capture and Logging
+
+VoiceLine's Capture feature records sales calls and automatically logs key details like duration, participants, and outcomes directly to your CRM. You focus on selling while the AI handles data entry.
+
+### Set Up Automatic Logging
+
+<Steps>
+  <Step title="Connect Your CRM" icon="link">
+    In the VoiceLine dashboard, navigate to Integrations and select your CRM provider.
+
+    ```bash
+    # Example API setup for Salesforce
+    curl -X POST https://api.example.com/integrations/salesforce \
+      -H "Authorization: Bearer YOUR_TOKEN" \
+      -d '{"client_id": "YOUR_CLIENT_ID"}'
+    ```
+  </Step>
+  <Step title="Enable Call Recording" icon="mic">
+    Toggle on automatic recording in Call Settings. Ensure compliance with local recording laws.
+  </Step>
+  <Step title="Test Logging" icon="play">
+    Make a test call and verify the log appears in your CRM within seconds.
+  </Step>
+</Steps>
+
+## Analyze Conversations
+
+Analyze turns raw call data into actionable market insights. VoiceLine detects sentiment, objections, and trends across your team's interactions.
+
+<Tabs>
+  <Tab title="Market Trends" icon="trending-up">
+    Review aggregated data to identify buying signals.
+
+    <Image
+      src="https://framerusercontent.com/images/xewONLdNV76TEcCXC9A8zWn4wjE.jpg"
+      alt="VoiceLine analytics dashboard showing conversation trends"
+      width="738"
+      height="722"
+    />
+  </Tab>
+  <Tab title="Sentiment Analysis" icon="activity">
+    Track positive and negative sentiment over time.
+
+    ```javascript
+    // Fetch analysis via API
+    const insights = await fetch('https://api.example.com/v1/calls/{callId}/insights', {
+      headers: { 'Authorization': 'Bearer YOUR_TOKEN' }
+    }).then(res => res.json());
+
+    console.log(insights.sentiment); // e.g., { positive: 0.85, negative: 0.15 }
+    ```
+  </Tab>
+</Tabs>
+
+## Coach Your Team
+
+VoiceLine's coaching tools provide real-time feedback and personalized development plans. You improve rep performance by reviewing AI-generated coaching sessions.
+
+<Expandable title="Advanced Coaching Workflow" default-open="true">
+  1. AI reviews calls for improvement areas like pacing or objection handling.
+  2. Generates role-play scenarios.
+  3. Tracks progress over time.
+
+  ```mermaid
+  graph TD
+      A[Record Call] --> B[AI Analysis]
+      B --> C[Feedback Report]
+      C --> D[Role-Play Practice]
+      D --> E[Performance Improvement]
+  ```
+</Expandable>
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Retrieve coaching reports
+  async function getCoaching(callId) {
+    const response = await fetch(`https://api.example.com/v1/coaching/${callId}`);
+    return response.json();
+  }
+  ```
+  ```python
+  # Retrieve coaching reports
+  import requests
+  response = requests.get('https://api.example.com/v1/coaching/{callId}',
+                         headers={'Authorization': 'Bearer YOUR_TOKEN'})
+  coaching_data = response.json()
+  ```
+</CodeGroup>
+
+## Task Management and Integrations
+
+VoiceLine automates task creation and meeting prep. Post-call, it generates follow-ups and pulls customer data for context-aware reminders.
+
+<ParamField path="callId" param-type="string" required="true">
+  Unique call identifier for task association.
+</ParamField>
+
+<ParamField header="Authorization" param-type="string" required="true">
+  Bearer token for API access.
+</ParamField>
+
+## Next Steps
+
+Integrate VoiceLine with your CRM for real-time data flow and start coaching sessions today.
+
+<Columns cols={2}>
+  <Card title="Quickstart" icon="book-open" href="/quickstart">
+    Set up your first integration.
+  </Card>
+  <Card title="API Reference" icon="code" href="/authentication">
+    Explore full API endpoints.
+  </Card>
+</Columns>

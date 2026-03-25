@@ -1,0 +1,135 @@
+---
+title: Changelog
+description: Track the latest updates, new features, and improvements in VoiceLine to stay informed on platform enhancements.
+---
+
+## Recent Updates
+
+Stay up to date with the latest releases. VoiceLine releases new versions regularly to enhance AI analysis, capture tools, coaching features, CRM integrations, and mobile performance.
+
+<Update label="2024-10-15" description="v1.5.0" tags={["feature", "improvement"]}>
+## New Features
+
+- Added advanced AI sentiment analysis for sales calls, detecting customer objections in real-time.
+- Introduced CRM integration with Salesforce, automatically syncing call notes and outcomes.
+
+## Improvements
+
+- Enhanced mobile app performance, reducing load times by 40% on iOS and Android devices.
+- Improved coaching module with personalized rep feedback based on call patterns.
+
+## Bug Fixes
+
+- Fixed capture module crashes during long recordings.
+- Resolved sync issues with HubSpot CRM.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.4.0" tags={["feature", "bugfix"]}>
+## New Features
+
+- New task automation in the Analyze module, generating follow-up actions from call insights.
+- Added Pipedrive integration for seamless activity logging.
+
+## Improvements
+
+- Optimized battery usage in the mobile Capture feature for extended field use.
+
+## Bug Fixes
+
+- Corrected coaching dashboard display errors on landscape mode.
+- Patched authentication glitches during CRM webhook setups.
+</Update>
+
+<Update label="2024-08-10" description="v1.3.0" tags={["improvement", "bugfix"]}>
+## New Features
+
+- Voice-to-text improvements with 95% accuracy for multiple accents.
+
+## Improvements
+
+- Faster analytics processing, delivering insights in under 10 seconds.
+- Updated UI for better mobile responsiveness.
+
+## Bug Fixes
+
+- Fixed intermittent data loss in coaching session exports.
+- Resolved integration delays with Zendesk.
+</Update>
+
+## Upgrade Instructions
+
+Follow these steps to ensure you get the latest features and fixes.
+
+<Steps>
+  <Step title="Check Current Version" icon="check-circle">
+    Open the VoiceLine mobile app or dashboard and navigate to Settings {`>`} About.
+  </Step>
+  <Step title="Update App" icon="download">
+    <Tabs>
+      <Tab title="iOS" icon="apple">
+````bash
+Open App Store {`>`} Search "VoiceLine" {`>`} Update
+````
+      </Tab>
+      <Tab title="Android" icon="android">
+````bash
+Open Google Play {`>`} Search "VoiceLine" {`>`} Update
+````
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Verify Integrations" icon="settings">
+    Go to Integrations tab and re-authenticate CRMs like Salesforce or HubSpot.
+  </Step>
+</Steps>
+
+## Quick Summary
+
+<Columns cols={3}>
+  <Card title="AI Analysis" icon="zap" href="#recent-updates">
+    New sentiment detection and task automation.
+  </Card>
+  <Card title="CRM Integrations" icon="database" href="#recent-updates">
+    Salesforce, Pipedrive, and HubSpot support.
+  </Card>
+  <Card title="Mobile Performance" icon="smartphone" href="#recent-updates">
+    Faster loads and better battery life.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Subscribe to our newsletter or watch the [VoiceLine status page](https://status.getvoiceline.com) for real-time update notifications.
+</Callout>
+
+<Expandable title="Detailed Integration Example" default-open="false">
+  Configure Salesforce webhook:
+
+<CodeGroup tabs="JavaScript,Python">
+````javascript
+const webhook = {
+  url: 'https://api.salesforce.com/webhook',
+  event: 'call_ended',
+  secret: 'YOUR_WEBHOOK_SECRET'
+};
+fetch('https://api.voiceline.com/webhooks', {
+  method: 'POST',
+  body: JSON.stringify(webhook),
+  headers: { 'Authorization': `Bearer YOUR_API_KEY` }
+});
+````
+````python
+import requests
+
+webhook = {
+    'url': 'https://api.salesforce.com/webhook',
+    'event': 'call_ended',
+    'secret': 'YOUR_WEBHOOK_SECRET'
+}
+
+requests.post('https://api.voiceline.com/webhooks',
+              json=webhook,
+              headers={'Authorization': 'Bearer YOUR_API_KEY'})
+````
+</CodeGroup>
+</Expandable>

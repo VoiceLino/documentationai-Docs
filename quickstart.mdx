@@ -1,0 +1,136 @@
+---
+title: Getting Started with VoiceLine
+description: Set up your VoiceLine account and make your first sales capture in minutes to start leveraging AI insights immediately.
+---
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+<Callout kind="info">
+- A sales CRM account (Salesforce, HubSpot, or similar)
+- A mobile device running iOS 15+ or Android 10+
+- An active email address for verification
+- Permissions to connect your CRM (admin access recommended)
+</Callout>
+
+VoiceLine works seamlessly with popular CRMs to log calls automatically and provide AI-powered insights.
+
+## Create and Verify Your Account
+
+Sign up in under 2 minutes to access the AI assistant platform.
+
+<Steps>
+  <Step title="Visit the signup page" icon="external-link">
+    Go to `https://app.getvoiceline.com/signup` and enter your email, name, and company details.
+  </Step>
+  <Step title="Verify your email" icon="mail">
+    Check your inbox for a verification link from VoiceLine. Click it to activate your account.
+  </Step>
+  <Step title="Set your password" icon="lock">
+    Return to the app and create a strong password. Enable two-factor authentication for security.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Use your work email for seamless CRM integration later.
+</Callout>
+
+## Download the Mobile App
+
+VoiceLine's mobile app is essential for field sales capture. Download based on your device.
+
+<Tabs>
+  <Tab title="iOS" icon="apple">
+    Open the App Store, search for "VoiceLine", and tap **Get**.
+
+    ```
+    Minimum requirements: iOS 15.0, 100MB storage
+    ```
+  </Tab>
+  <Tab title="Android" icon="android">
+    Open Google Play Store, search for "VoiceLine", and tap **Install**.
+
+    ```
+    Minimum requirements: Android 10.0, 100MB storage
+    ```
+  </Tab>
+</Tabs>
+
+Log in with your verified credentials after installation.
+
+## Configure CRM Connection
+
+Connect your CRM to auto-log activities and unlock analytics.
+
+<Steps>
+  <Step title="Open app settings" icon="settings">
+    Tap the profile icon, then **Integrations**.
+  </Step>
+  <Step title="Select your CRM" icon="database">
+    Choose Salesforce, HubSpot, or Pipedrive from the list.
+  </Step>
+  <Step title="Authorize connection" icon="shield">
+    Follow the OAuth prompts. Grant permissions for call logging and data sync.
+  </Step>
+</Steps>
+
+<Expandable title="Common CRM Setup Codes" default-open="false">
+  For custom CRMs, use this webhook format:
+
+  ```json
+  {
+    "webhook_url": "https://api.getvoiceline.com/webhooks/crm-sync",
+    "secret": "YOUR_WEBHOOK_SECRET"
+  }
+  ```
+</Expandable>
+
+## Record Your First Sales Conversation
+
+Capture your next call to generate instant AI insights.
+
+<Steps>
+  <Step title="Start a new capture" icon="mic">
+    Tap the **+** button and select **Record Call**.
+  </Step>
+  <Step title="Conduct the call" icon="phone">
+    Place your sales call. VoiceLine transcribes and analyzes in real-time.
+  </Step>
+  <Step title="Review insights" icon="zap">
+    End the call. View summary, key topics, and action items automatically.
+  </Step>
+</Steps>
+
+Expect `<1 minute` processing time for insights like sentiment analysis and next steps.
+
+## Access the Dashboard
+
+View aggregated insights across your team.
+
+1. Log into `https://dashboard.getvoiceline.com`.
+2. Navigate to **Analytics** for call trends.
+3. Check **Coaching** for rep performance tips.
+
+<Callout kind="success">
+  Congrats! You've captured your first conversation. AI insights are now available.
+</Callout>
+
+## Next Steps
+
+Dive deeper into VoiceLine features.
+
+<Columns cols={2}>
+  <Card title="AI Analytics" icon="bar-chart-3" href="/analytics">
+    Explore conversation trends and revenue drivers.
+  </Card>
+  <Card title="Team Coaching" icon="users" href="/coaching">
+    Coach reps with personalized feedback.
+  </Card>
+  <Card title="Integrations" icon="plug" href="/integrations">
+    Advanced CRM and tool setups.
+  </Card>
+  <Card title="API Reference" icon="code" href="/api">
+    Build custom workflows.
+  </Card>
+</Columns>

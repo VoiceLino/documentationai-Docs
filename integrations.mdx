@@ -1,0 +1,152 @@
+---
+title: Integrations and Connections
+description: Connect VoiceLine with your existing CRM and third-party tools to streamline workflows and enhance data flow across your sales ecosystem.
+---
+
+## Overview
+
+VoiceLine supports seamless integrations with popular CRMs, calendars, analytics tools, and custom webhooks. These connections automate data syncing, enrich call insights, and prepare your sales team for success without manual effort.
+
+<Columns cols={3}>
+  <Card title="CRM Sync" icon="database" href="#crm-integrations">
+    Automatically log calls and activities to Salesforce, HubSpot, and more.
+  </Card>
+  <Card title="Webhooks" icon="zap" href="#webhooks">
+    Receive real-time updates for custom workflows.
+  </Card>
+  <Card title="Calendars" icon="calendar" href="#calendars">
+    Sync meetings for AI-powered prep and follow-ups.
+  </Card>
+</Columns>
+
+## CRM Integrations
+
+Connect VoiceLine to your CRM to push call transcripts, insights, and activity logs automatically.
+
+<Tabs>
+  <Tab title="Salesforce" icon="settings">
+    <Steps>
+      <Step title="Enable Integration" icon="toggle-right">
+        In your VoiceLine dashboard, navigate to Settings > Integrations > Salesforce. Click "Connect" and authorize with your Salesforce credentials.
+      </Step>
+      <Step title="Map Fields">
+        Select fields like `Call Duration`, `Transcript`, and `Sentiment Score` to sync to custom objects or standard Activity records.
+      </Step>
+      <Step title="Test Sync">
+        Run a test call and verify data appears in Salesforce within `<30s`.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="HubSpot" icon="settings">
+    <Steps>
+      <Step title="OAuth Setup">
+        Generate a HubSpot API key and paste it into VoiceLine's integration panel.
+      </Step>
+      <Step title="Configure Events">
+        Enable syncing for call outcomes and AI insights to HubSpot deals.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  Use OAuth 2.0 for secure connections. Revoke access anytime from your dashboard.
+</Callout>
+
+## Webhooks for Real-Time Syncing
+
+Set up webhooks to push VoiceLine events like call completions or insight updates to your backend.
+
+### Webhook Configuration
+
+<ParamField path="webhook_url" param-type="string" required="true">
+  Your endpoint URL, e.g., `https://your-webhook-url.com/voiceline`.
+</ParamField>
+
+<ParamField header="Authorization" param-type="string" required="false">
+  Bearer token for authentication, e.g., `Bearer YOUR_TOKEN`.
+</ParamField>
+
+<ParamField body="event_type" param-type="string">
+  Event trigger like `call.completed` or `insight.generated`.
+</ParamField>
+
+### Example Payload
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // POST /voiceline
+  {
+    "event": "call.completed",
+    "call_id": "cl_123abc",
+    "transcript": "Full call text here...",
+    "sentiment": "positive",
+    "timestamp": "2024-10-15T14:30:00Z"
+  }
+  ```
+  ```python
+  # POST /voiceline
+  {
+      "event": "call.completed",
+      "call_id": "cl_123abc",
+      "transcript": "Full call text here...",
+      "sentiment": "positive",
+      "timestamp": "2024-10-15T14:30:00Z"
+  }
+  ```
+</CodeGroup>
+
+Test with this cURL:
+
+````bash
+curl -X POST https://api.example.com/v1/webhooks \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_WEBHOOK_SECRET" \
+  -d '{
+    "url": "https://your-webhook-url.com/voiceline"
+  }'
+````
+
+## Calendar Connections
+
+Integrate with Google Calendar or Outlook to auto-schedule prep materials and follow-ups.
+
+<Expandable title="Google Calendar Setup" default-open="true">
+  1. Go to VoiceLine Settings > Calendar.
+  2. Select Google and authorize.
+  3. Map call insights to event descriptions.
+
+  VoiceLine adds AI summaries as event notes automatically.
+</Expandable>
+
+<Expandable title="Outlook Integration">
+  Similar OAuth flow. Supports Microsoft 365 tenants.
+</Expandable>
+
+## Analytics Tool Integrations
+
+Connect to tools like Mixpanel or Amplitude for advanced sales metrics.
+
+- Use webhooks to forward call data.
+- Segment users by sentiment scores.
+
+## Best Practices
+
+<Callout kind="alert">
+  Always use HTTPS endpoints. Validate payloads with HMAC signatures using your webhook secret.
+</Callout>
+
+<Columns cols={2}>
+  <Card title="Security First" icon="shield" href="#">
+    Rotate secrets regularly and limit IP access.
+  </Card>
+  <Card title="Monitor Syncs" icon="activity" href="#">
+    Check integration logs for errors in real-time.
+  </Card>
+</Columns>
+
+<Expandable title="Troubleshooting Common Issues">
+  - **Sync Delays**: Verify API rate limits (`<100/min`).
+  - **Auth Failures**: Reauthorize OAuth tokens.
+  - **Payload Too Large**: Compress transcripts or use summaries.
+</Expandable>
